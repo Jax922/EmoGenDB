@@ -1,28 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter(); // Next.js 路由跳转
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
     setError("");
 
     try {
-      const response = await axios.get("http://10.48.8.76:8000/login", {
+      const response = await axios.get("http://10.48.8.76:8000/register", {
         params: { username, password },
       });
-
-      // 如果登录成功，跳转到 /anno 页面
-      if (response.data.success) {
-        router.push("/anno");
-      }
+      setMessage(response.data.message);
+      setUsername("");
+      setPassword("");
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.detail) {
         setError(err.response.data.detail);
@@ -35,7 +33,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4">Login</h1>
+        <h1 className="text-2xl font-bold mb-4">Register</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">
@@ -67,9 +65,10 @@ export default function LoginPage() {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Login
+            Register
           </button>
         </form>
+        {message && <p className="mt-4 text-green-600">{message}</p>}
         {error && <p className="mt-4 text-red-600">{error}</p>}
       </div>
     </div>

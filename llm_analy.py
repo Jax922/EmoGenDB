@@ -15,14 +15,16 @@ import pandas as pd
 # )
 
 client = openai.OpenAI(
-    api_key="sk-xwDnb4uN1aJC89lS7OD0dHxabjMAPi1cWsOUcmB7PHmrc49H",
+    api_key="sk-aMbDmyDIzKNrYKlwy19hUbwShQXVQY2Q9h2XYcxTnXIGmA2T",
     base_url="https://api.chatanywhere.tech/v1"
 )
 
 
-dir_path = "/home/pci/dong/AIGC-image/jouneryDB/mj37/"
+dir_path = "/home/pci/dong/AIGC-image/jouneryDB-2/mj43/"
+
 csv_file = dir_path + "aggregated_data.csv"
-imgs_path = dir_path + "imgs/"
+# imgs_path = dir_path + "imgs/"
+imgs_path = dir_path
 
 # Load local image and encode in Base64
 def encode_image_to_base64(image_path):
