@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import axios from "axios";
+import appConfig from "@/appConfig";
 
 export default function RegisterPage() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");``
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +16,7 @@ export default function RegisterPage() {
     setError("");
 
     try {
-      const response = await axios.get("http://10.48.8.76:8000/register", {
+      const response = await axios.get(`${appConfig.baseURL}/register`, {
         params: { username, password },
       });
       setMessage(response.data.message);

@@ -35,8 +35,8 @@ emotion_mapping = {
 }
 
 # 读取 CSV 文件
-input_csv = "/home/pci/dong/AIGC-image/MJ/all.csv"  # 替换为你的文件名
-output_csv = "/home/pci/dong/AIGC-image/MJ/all_cleaned.csv"
+input_csv = "/home/pci/dong/emodb/dong/AIGC-image/DiffusionDB/all.csv"  # 替换为你的文件名
+output_csv = "/home/pci/dong/emodb/dong/AIGC-image/DiffusionDB/all_cleaned.csv"
 
 df = pd.read_csv(input_csv)
 

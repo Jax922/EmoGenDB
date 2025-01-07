@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import appConfig from "@/appConfig";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -15,13 +16,13 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await axios.get("http://10.48.8.76:8000/login", {
+      const response = await axios.get(`${appConfig.baseURL}/login`, {
         params: { username, password },
       });
 
       // 如果登录成功，跳转到 /anno 页面
       if (response.data.success) {
-        router.push("/anno");
+        router.push(`/anno?userid=${response.data.user_id}`);
       }
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.detail) {

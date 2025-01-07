@@ -116,5 +116,5 @@ def process_csv_and_images(base_dir):
 
 
 if __name__ == "__main__":
-    base_dir = "/home/pci/dong/AIGC-image/MJ"  # 替换为你的实际路径
+    base_dir = "/home/pci/dong/emodb/dong/AIGC-image/DiffusionDB"  # 替换为你的实际路径
     process_csv_and_images(base_dir)

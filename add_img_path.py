@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # 主目录路径
-base_dir = "/home/pci/dong/AIGC-image/MJ/"
+base_dir = "/home/pci/dong/emodb/dong/AIGC-image/DiffusionDB/"
 
 # 遍历所有子目录
 for subdir in os.listdir(base_dir):

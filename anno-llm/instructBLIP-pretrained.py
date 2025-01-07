@@ -9,6 +9,7 @@ from lavis.models import load_model_and_preprocess
 # 模型和处理器
 model_name = "Salesforce/instructblip-vicuna-7b"
 model_path = "/home/pci/dong/emodb/dong/local_model"
+weight_path = "/home/pci/dong/emodb/dong/lavis_with_weight/LAVIS/model_weights1.pth"
 processor = InstructBlipProcessor.from_pretrained(model_path)
 
 # 配置量化
@@ -24,13 +25,22 @@ model = InstructBlipForConditionalGeneration.from_pretrained(
     device_map="auto"
 )
 
+# 加载权重
+
+# model.load_state_dict(torch.load(weight_path))
+ckpt = torch.load(weight_path)
+model.load_state_dict(ckpt)
+model.eval()
+
+
+
 # 设备配置
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print("Device:", device)
 
 # 加载 CSV 文件
 csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned.csv"
-output_csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned_vicuna7b.csv"
+output_csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned_emovit.csv"
 df = pd.read_csv(csv_path)
 
 df["image_path"] = df["image_path"].str.replace(

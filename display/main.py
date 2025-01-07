@@ -4,9 +4,16 @@ import pandas as pd
 # 加载数据并缓存
 @st.cache_data
 def load_data(csv_path):
-    return pd.read_csv(csv_path)
+    df = pd.read_csv(csv_path)
+    # 替换 image_path 开头路径
+    # df["image_path"] = df["image_path"].str.replace(
+    #     "/home/pci/dong",
+    #     "/home/pci/dong/emodb/dong",
+    #     regex=False
+    # )
+    return df
 
-csv_path = "/home/pci/dong/AIGC-image/jouneryDB/all_cleaned.csv"
+csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned_vicuna7b_balanced25.csv"
 df = load_data(csv_path)
 
 # 添加标题
@@ -17,7 +24,8 @@ keyword = st.text_input("Search by Caption or ANP", "")
 if keyword:
     filtered_df = df[
         df["Caption"].str.contains(keyword, na=False, case=False) |
-        df["ANP"].str.contains(keyword, na=False, case=False)
+        df["ANP"].str.contains(keyword, na=False, case=False) |
+        df["image_path"].str.contains(keyword, na=False, case=False)
     ]
 else:
     filtered_df = df
@@ -45,7 +53,7 @@ for row in rows:
         with cols[idx]:
             with st.container():
                 # 使用 st.image 展示图片
-                st.image(data["image_path"], caption=data["Caption"], use_container_width = True)
+                st.image(data["image_path"], caption=data["Caption"], use_container_width=True)
                 st.markdown(f"""
                     **Emotion**: {data['Emotion_Categorical']}  
                     **ANP**: {data['ANP']}  

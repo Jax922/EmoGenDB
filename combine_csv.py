@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # Define the base directory and output file
-base_dir = "/home/pci/dong/AIGC-image/jouneryDB"
+base_dir = "/home/pci/dong/emodb/dong/AIGC-image/DiffusionDB/"
 output_file = os.path.join(base_dir, "all.csv")
 
 # List to store DataFrame from each file
