@@ -127,7 +127,7 @@ class Annotation(BaseModel):
 # def startup():
 #     create_database_and_tables()
 
-app.mount("/images", StaticFiles(directory="/home/pci/dong/emodb/dong/AIGC-image/MJ/sample_images_200"), name="images")
+app.mount("/images", StaticFiles(directory="/root/dev/EmoGenDB/sample_images_5k"), name="images")
 
 @app.get("/register")
 def register(username: str, password: str):

@@ -4,7 +4,7 @@ import pandas as pd
 # 数据库路径
 db_path = "./emotions.db"
 # CSV 文件路径
-csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned_vicuna7b_balanced25.csv"
+csv_path = "/root/dev/EmoGenDB/updated_file1.csv"
 
 # 连接到 SQLite 数据库
 conn = sqlite3.connect(db_path)

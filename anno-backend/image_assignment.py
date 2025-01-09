@@ -5,7 +5,7 @@ import pandas as pd
 db_path = "./emotions.db"
 # CSV 文件路径
 # csv_path = "/home/pci/dong/emodb/dong/AIGC-image/MJ/all_cleaned_vicuna7b_balanced25.csv"
-csv_path = "/home/pci/dong/emodb/dong/AIGC-image/jouneryDB/all_cleaned_balanced25.csv"
+csv_path = "/root/dev/EmoGenDB/updated_file2.csv"
 
 # 用户数量（从1开始分配用户 ID，假设有 10 个用户）
 num_users = 10
